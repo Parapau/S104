@@ -1,7 +1,6 @@
 package N1E2;
 
 public class CalculDNI {
-	int num;
 	
 	public static char calculDNI(int num) {
 		char car;
