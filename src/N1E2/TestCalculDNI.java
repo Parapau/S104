@@ -1,25 +1,29 @@
 package N1E2;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-class TestCalculDNI {
-	
-	@Test
-	void test() {
-		assertEquals('L', CalculDNI.calculDNI(47598404));
-		assertEquals('Z', CalculDNI.calculDNI(12345678));
-		assertEquals('M', CalculDNI.calculDNI(98765432));
-		assertEquals('C', CalculDNI.calculDNI(78945611));
-		assertEquals('B', CalculDNI.calculDNI(65498721));
-		assertEquals('K', CalculDNI.calculDNI(78912354));   
-		assertEquals('Z', CalculDNI.calculDNI(49758214));
-		assertEquals('C', CalculDNI.calculDNI(84756124));
-		assertEquals('L', CalculDNI.calculDNI(65983247));
-		assertEquals('F', CalculDNI.calculDNI(78524698));
-		assertEquals('Q', CalculDNI.calculDNI(39854531));
-		
+public class DNITest {
+
+	@ParameterizedTest
+	@CsvSource({ 
+        "47598404, L",
+        "39854531, Q",
+        "87654321, X",
+        "65432187, Q",
+        "17384755, K",
+        "93763847, E",
+        "89465342, S",
+        "98347836, P",
+        "82936162, X",
+        "64576676, D"
+})
+	void test(int dni, char lletra) {
+		assertEquals(lletra, CalculDNI.calculDNI(dni));
 	}
 
 }
